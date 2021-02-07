@@ -1,0 +1,38 @@
+{
+  "name": "esbuild-plugin-browserify-adapter",
+  "version": "0.0.0",
+  "description": "Use Browserify transforms as esbuild plugins",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./test/test.js",
+    "posttest": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m90/esbuild-plugin-browserify-adapter.git"
+  },
+  "keywords": [
+    "browserify",
+    "esbuild",
+    "transform",
+    "plugin",
+    "adapter"
+  ],
+  "author": "Frederik Ring <frederik.ring@gmail.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/m90/esbuild-plugin-browserify-adapter/issues"
+  },
+  "homepage": "https://github.com/m90/esbuild-plugin-browserify-adapter#readme",
+  "devDependencies": {
+    "coffeeify": "^3.0.1",
+    "coffeescript": "^2.5.1",
+    "envify": "^4.1.0",
+    "esbuild": "^0.8.42",
+    "standard": "^16.0.3",
+    "tape": "^5.1.1",
+    "through2": "^4.0.2",
+    "vm": "^0.1.0",
+    "yamlify": "^0.2.0"
+  }
+}
