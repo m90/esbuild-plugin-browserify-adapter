@@ -1,5 +1,12 @@
 # Changes
 
+## 0.1.2
+
+- [`f5367db`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/f5367dbbc63d6af5856c4d25eafb6ead570fcf03)
+  fix behavior when multiple plugins are registered, always pass options object
+- [`7787c6b`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/7787c6b3327f1236d0041dbde71dffaef2e40ae1)
+  remove copy/paste leftover from README
+
 ## 0.1.1
 
 - [`2296a44`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/2296a44447410e848ad2e393d2304dfa39150956)
