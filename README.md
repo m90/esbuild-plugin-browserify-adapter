@@ -45,7 +45,7 @@ esbuild.build({
 
 ## Releasing a new version
 
-New versions can be released using `npm version <patch|minor|major>`. Make sure you are authenticated against the `@offen` scope with npm.
+New versions can be released using `npm version <patch|minor|major>`.
 
 ## License
 
