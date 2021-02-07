@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/m90/esbuild-plugin-browserify-adapter#readme",
   "devDependencies": {
+    "@studio/changes": "^2.0.1",
     "coffeeify": "^3.0.1",
     "coffeescript": "^2.5.1",
     "envify": "^4.1.0",
@@ -37,8 +38,5 @@
     "through2": "^4.0.2",
     "vm": "^0.1.0",
     "yamlify": "^0.2.0"
-  },
-  "dependencies": {
-    "@studio/changes": "^2.0.1"
   }
 }
