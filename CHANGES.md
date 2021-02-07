@@ -1,5 +1,10 @@
 # Changes
 
+## 0.1.3
+
+- [`032aa49`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/032aa49e2d7830ffb2f69d3db04fcb2cb4cd8d76)
+  run multiple transforms a part of the same pipeline
+
 ## 0.1.2
 
 - [`f5367db`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/f5367dbbc63d6af5856c4d25eafb6ead570fcf03)

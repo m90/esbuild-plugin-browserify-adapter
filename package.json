@@ -1,6 +1,6 @@
 {
   "name": "esbuild-plugin-browserify-adapter",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Use Browserify transforms as esbuild plugins",
   "main": "index.js",
   "scripts": {
