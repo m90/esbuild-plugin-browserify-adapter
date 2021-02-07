@@ -4,19 +4,20 @@
  */
 
 const fs = require('fs')
-const crypto = require('crypto')
 
-module.exports = (transform, transformOptions) => {
-  // the name of the esbuild plugin needs to be unique per transform, so
-  // a hash of the function body is appended
-  const transformId = crypto.createHash('sha256').update(transform.toString())
+module.exports = (...transforms) => {
   return {
-    name: `browserify-adapter-${transformId.digest('hex')}`,
+    name: 'browserify-adapter',
     setup (build) {
+      const normalizedTransforms = transforms.map(t => Array.isArray(t) ? t : [t])
       build.onLoad({ filter: /.*/ }, (args) => {
         return new Promise(function (resolve, reject) {
-          fs.createReadStream(args.path)
-            .pipe(transform(args.path, transformOptions || {}))
+          let file = fs.createReadStream(args.path)
+          for (const [transformFn, options] of normalizedTransforms) {
+            file = file.pipe(transformFn(args.path, options || {}))
+          }
+
+          file
             .on('error', function (err) {
               resolve({
                 errors: [{ text: 'Error applying transform', detail: err }]
