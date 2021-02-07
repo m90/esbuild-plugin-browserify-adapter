@@ -1,6 +1,6 @@
 # esbuild-plugin-browserify-adapter
 
-Use Browserify transforms as esbuild plugins
+Use [Browserify transforms](https://github.com/browserify/browserify-handbook#transforms) as [esbuild plugins](https://esbuild.github.io/plugins/).
 
 ## Installation
 
@@ -12,7 +12,7 @@ npm install esbuild-plugin-browserify-adapter -D
 
 ## Usage
 
-This adapter lets you use any existing [Browserify transform](https://github.com/browserify/browserify-handbook#transforms) as an esbuild plugin. The plugin function can be passed an arbitrary number of transforms. Just like with Browserify itself, options are passed by wrapping the transform in an array and appending the options to that list.
+This adapter lets you use any existing Browserify transform as an esbuild plugin. The plugin function can be passed an arbitrary number of transforms. Just like with Browserify itself, options are passed by wrapping the transform in an array and appending the options to that list.
 
 __Please note: This module does not work with Browserify plugins.__
 
@@ -66,6 +66,10 @@ esbuild.build({
   outdir: './public'
 })
 ```
+
+## Why?
+
+This plugin can help you with gradually migrating a Browserify-based setup to an esbuild-based one without having to change everything at once. It is not intended to be used as a permanent solution unless your transform usage is very limited.
 
 ---
 
