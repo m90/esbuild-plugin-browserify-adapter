@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "tape ./test/test.js",
-    "posttest": "standard"
+    "posttest": "standard",
+    "preversion": "npm test",
+    "version": "changes --commits",
+    "postversion": "git push --follow-tags && npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -34,5 +37,8 @@
     "through2": "^4.0.2",
     "vm": "^0.1.0",
     "yamlify": "^0.2.0"
+  },
+  "dependencies": {
+    "@studio/changes": "^2.0.1"
   }
 }
