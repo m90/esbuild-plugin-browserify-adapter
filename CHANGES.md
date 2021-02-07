@@ -1,5 +1,12 @@
 # Changes
 
+## 0.1.4
+
+- [`7f3930c`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/7f3930cb149dbed7ff8ed6cb0566b4a9fc61d863)
+  add npmignore file to exclude tests from package
+- [`b3202fa`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/b3202fa3fe8ac6688e8427c3846ce2f3465db5fe)
+  add explanation to README
+
 ## 0.1.3
 
 - [`032aa49`](https://github.com/m90/esbuild-plugin-browserify-adapter/commit/032aa49e2d7830ffb2f69d3db04fcb2cb4cd8d76)
