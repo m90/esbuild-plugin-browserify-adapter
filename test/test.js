@@ -7,10 +7,12 @@ const yamlify = require('yamlify')
 const coffeeify = require('coffeeify')
 
 const dummy = require('./dummy')
-const browserifyAdapterPlugin = require('..')
+const browserifyAdapter = require('..')
 
 tape.test('applies the given transform and options (custom dummy transform)', function (t) {
-  bundle('local.js', browserifyAdapterPlugin(dummy, { replaceWith: 'Puppies!' }), function (err, src) {
+  bundle('local.js', [
+    browserifyAdapter(dummy, { replaceWith: 'Puppies!' })
+  ], function (err, src) {
     if (err) {
       t.fail(err)
     }
@@ -26,7 +28,9 @@ tape.test('applies the given transform and options (custom dummy transform)', fu
 })
 
 tape.test('applies the given transform and options (envify)', function (t) {
-  bundle('envify.js', browserifyAdapterPlugin(envify, { ENVIFY_VALUE: 'Browserify' }), function (err, src) {
+  bundle('envify.js', [
+    browserifyAdapter(envify, { ENVIFY_VALUE: 'Browserify' })
+  ], function (err, src) {
     if (err) {
       t.fail(err)
     }
@@ -42,7 +46,7 @@ tape.test('applies the given transform and options (envify)', function (t) {
 })
 
 tape.test('applies the given transform and options (yamlify)', function (t) {
-  bundle('yaml.js', browserifyAdapterPlugin(yamlify), function (err, src) {
+  bundle('yaml.js', [browserifyAdapter(yamlify)], function (err, src) {
     if (err) {
       t.fail(err)
     }
@@ -57,8 +61,26 @@ tape.test('applies the given transform and options (yamlify)', function (t) {
   })
 })
 
+tape.test('applies multiple transforms in order (yamlify + envify)', function (t) {
+  bundle('multi.js', [
+    browserifyAdapter(yamlify), browserifyAdapter(envify, { ENVIFY_VALUE: 'puppies' })
+  ], function (err, src) {
+    if (err) {
+      t.fail(err)
+    }
+    vm.runInNewContext(src, {
+      console: { log: log }
+    })
+
+    function log (value) {
+      t.equal(value, '12 puppies', 'passes')
+      t.end()
+    }
+  })
+})
+
 tape.test('applies to entrypoints as well (coffeeify)', function (t) {
-  bundle('app.coffee', browserifyAdapterPlugin(coffeeify), function (err, src) {
+  bundle('app.coffee', [browserifyAdapter(coffeeify)], function (err, src) {
     if (err) {
       t.fail(err)
     }
@@ -73,11 +95,11 @@ tape.test('applies to entrypoints as well (coffeeify)', function (t) {
   })
 })
 
-function bundle (file, configuredPlugin, callback) {
+function bundle (file, configuredPlugins, callback) {
   esbuild.build({
     entryPoints: [path.join(__dirname, file)],
     bundle: true,
-    plugins: [configuredPlugin],
+    plugins: configuredPlugins,
     write: false
   })
     .then(function (result) {

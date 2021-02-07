@@ -23,7 +23,7 @@ esbuild.build({
   entryPoints: ['./app.coffee'],
   bundle: true,
   plugins: [browserifyAdapter(coffeeify)],
-  outDir: './public'
+  outdir: './public'
 })
 ```
 
@@ -38,7 +38,7 @@ esbuild.build({
   entryPoints: ['./app.js'],
   bundle: true,
   plugins: [browserifyAdapter(envify, { BUNDLE_TIME: new Date().toJSON() })],
-  outDir: './public'
+  outdir: './public'
 })
 ```
 ---
