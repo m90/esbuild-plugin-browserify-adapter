@@ -17,6 +17,7 @@ module.exports = (...transforms) => {
             file = file.pipe(transformFn(args.path, options || {}))
           }
 
+          let buf = ''
           file
             .on('error', function (err) {
               resolve({
@@ -24,7 +25,10 @@ module.exports = (...transforms) => {
               })
             })
             .on('data', function (data) {
-              resolve({ contents: data })
+              buf += data
+            })
+            .on('end', function () {
+              resolve({ contents: buf })
             })
         })
       })
